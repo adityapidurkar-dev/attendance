@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Tracker</title>
@@ -15,12 +16,14 @@
 <body>
 
     <div class="container">
-        <h2>Attendance List</h2>
+        <h2 style="text-align: center; font-size: 35px;">Attendance List</h2>
+        <h3 id="dateDisplay" style="text-align: center;"></h3>
         <div id="studentList"></div>
-        <button onclick="submitAttendance()">Submit</button>
+        <button onclick="submitAttendance()" style="text-align: center;">Submit</button>
     </div>
 
     <script>
+        
         // Student data from Excel
         const students = [
             {"roll": "1", "name": "Avika Mishra"},
@@ -28,7 +31,6 @@
             {"roll": "3", "name": "Vinshi Manwatkar"},
             {"roll": "4", "name": "Harshal Premraj Keche"},
             {"roll": "5", "name": "Sarthaki Sameer Fuley"},
-            {"roll": "6", "name": "Sannidhyaa Giri"},
             {"roll": "7", "name": "Aastha Goyanka"},
             {"roll": "8", "name": "Aditi Paul"},
             {"roll": "9", "name": "Yash Meghraj Gajbhiye"},
@@ -38,12 +40,50 @@
             {"roll": "13", "name": "Pranshul Modani"},
             {"roll": "14", "name": "Aditya Pidurkar"},
             {"roll": "15", "name": "Vidhi Nimbalkar"},
-            {"roll": "16", "name": "Samiksha Harkande"},
-            {"roll": "17", "name": "Priyansh Jadhav"},
-            {"roll": "18", "name": "Saikiran Kotichintala"},
-            {"roll": "19", "name": "Samiksha Shukla"},
-            {"roll": "20", "name": "Vidhi Nitin Badhiye"}
-            // Add all remaining students from the Excel file...
+            {"roll": "17", "name": "Samiksha Harkande"},
+            {"roll": "18", "name": "Priyansh Jadhav"},
+            {"roll": "19", "name": "Saikiran Kotichintala"},
+            {"roll": "20", "name": "Samiksha Shukla"},
+            {"roll": "21", "name": "Vidhi Nitin Badhiye"},
+            {"roll": "22", "name": "Tameshwari Dhankar"},
+            {"roll": "23", "name": "Shraddha Agrawal"},
+            {"roll": "24", "name": "Mayank Helonde"},
+            {"roll": "25", "name": "Koustubh Bhisade"},
+            {"roll": "26", "name": "Shravani Kali"},
+            {"roll": "27", "name": "Tapan Bakshi"},
+            {"roll": "28", "name": "Arpita Rajesh Hanwatkar"},
+            {"roll": "29", "name": "Nidhi Singh"},
+            {"roll": "30", "name": "Astha Baraskar"},
+            {"roll": "31", "name": "Siddhant Wadher"},
+            {"roll": "32", "name": "Sanskar Satewar"},
+            {"roll": "33", "name": "Neha Tated"},
+            {"roll": "34", "name": "Ved Tidke"},
+            {"roll": "35", "name": "Vedika Bandewar"},
+            {"roll": "36", "name": "Snehal Sathawane"},
+            {"roll": "37", "name": "Aditya Pal"},
+            {"roll": "38", "name": "Krrish Parmar"},
+            {"roll": "39", "name": "Achal Sandeep Lohiya"},
+            {"roll": "40", "name": "Sanika Sunil Bhoyar"},
+            {"roll": "41", "name": "Kushal Mahendra Trivedi"},
+            {"roll": "42", "name": "Gauri Gadewar"},
+            {"roll": "43", "name": "Siya Prashant Vaidya"},
+            {"roll": "44", "name": "Dhananjay Gandhi"},
+            {"roll": "45", "name": "Mihera Gaikee"},
+            {"roll": "46", "name": "Saloni Salem"},
+            {"roll": "47", "name": "Ram Chandak"},
+            {"roll": "48", "name": "Seva Mundra"},
+            {"roll": "49", "name": "Ansh Nandanwar"},
+            {"roll": "50", "name": "Vedanti Gorle"},
+            {"roll": "51", "name": "Aryan Babarao Thakre"},
+            {"roll": "54", "name": "Palak Kharabe"},
+            {"roll": "55", "name": "Krish Satdeve"},
+            {"roll": "56", "name": "Ayushi Sonber"},
+            {"roll": "57", "name": "Pankaj Agrawal"},
+            {"roll": "58", "name": "Shravani Pradip Bharsakale"},
+            {"roll": "59", "name": "Khushi Kirnapure"},
+            {"roll": "60", "name": "Jidnyasa Jeevan Zade"},
+            {"roll": "61", "name": "Kaivalya Maske"},
+            {"roll": "63", "name": "Rashi Bhoyar"}
         ];
 
         function loadStudents() {
