@@ -98,34 +98,6 @@
                 list.appendChild(div);
             });
         }
-
-        function submitAttendance() {
-            const selectedRolls = [];
-            document.querySelectorAll("input[type='checkbox']:checked").forEach(checkbox => {
-                selectedRolls.push(checkbox.value);
-            });
-
-            if (selectedRolls.length === 0) {
-                alert("No students selected!");
-                return;
-            }
-
-            // Copy to clipboard
-            navigator.clipboard.writeText(selectedRolls.join(", ")).then(() => {
-                alert("Roll numbers copied to clipboard!");
-            });
-
-            // Send to Discord Webhook
-            fetch("https://discord.com/api/webhooks/1354895906641678447/d5Hw0usD2b6CDfavBrbNg3TCdn8DFdfcoXquVwqJx2kcmQAIEhyVUUOAze3gJ2dkGvdi", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ content: selectedRolls.join(", ") })
-            }).then(response => {
-                if (response.ok) alert("Attendance sent to Discord!");
-                else alert("Failed to send attendance.");
-            }).catch(error => console.error("Error:", error));
-        }
-
         window.onload = loadStudents;
     </script>
 
